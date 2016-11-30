@@ -53,7 +53,6 @@ for i in range(nSel):
 	selection = sel[i][2]
 	scat_hist(time[:],datalist[:,i],'k','Time (ns)','Minimum Distance','%02d.%s.%s' %(i,selection,system),'minimum_distance',yunits='$\AA$')
 	hist1d(datalist[:,i],'Minimum Distance','%02d.%s.%s' %(i,selection,system),'minimum_distance',norm=True,xunits='$\AA$')
-
 	
 	# Loop through each column and create a histogram and the probability density
 	out1 = open('%02d.%s.%s.minimum_distance_calc.prob_density_hist.dat' %(i,selection,system),'w')
@@ -86,3 +85,5 @@ for i in range(nSel):
 
         # scatter plot for probability density
 	plot_1d(half_bin,prob,'k','Minimum Distance','Probability Density','%02d.%s.%s' %(i,selection,system),'minimum_distance_prob_density',xunits='$\AA$')
+	hist2d(datalist[:,1],datalist[:,2],'R50 gtp_gamma_phosphate Minimum Distance','S143 gtp_alpha_phosphate Minimum Distance',500,'R50gtp_gamma_S143gtp_alpha.%s' %(system),'joint_probability_density',norm=True,xunits='$\AA$',yunits='$\AA$')
+	hist2d(datalist[:,1],datalist[:,3],'R50 gtp_gamma_phosphate Minimum Distance','S143 gtp_beta_phosphate Minimum Distance',500,'R50gtp_gamma_S143gtp_beta.%s' %(system),'joint_probability_density',norm=True,xunits='$\AA$',yunits='$\AA$')
