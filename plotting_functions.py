@@ -1,4 +1,4 @@
-##!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
+#!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
 # USAGE:
 # from fn_plotting.py import *
 
@@ -284,10 +284,10 @@ def bar(xdata, ydata, x_axis, y_axis, system, analysis, **kwargs):
 	plt.savefig('%s.%s.bar.png' %(system,analysis),dpi=300)
 	plt.close()
 
-def hist2d(xdata, ydata, x_axis, y_axis, num_b, system, analysis, norm):
+def hist2d(xdata, ydata, x_axis, y_axis, num_b, system, analysis, norm, **kwargs):
 	""" Creates a 2D histogram (heat map)
 	
-	Usage: hist2d(xdata, ydata, x_axis, y_axis, num_b, system, analysis, norm)
+	Usage: hist2d(xdata, ydata, x_axis, y_axis, num_b, system, analysis, norm, **kwarg)
 	
 	Arguments:
 	xdata, ydata: self-explanatory
@@ -296,6 +296,10 @@ def hist2d(xdata, ydata, x_axis, y_axis, num_b, system, analysis, norm):
 	system: descriptor for the system analyzed
 	analysis: descriptor for the analysis performed and plotted
 	norm = [False][True]; if False, plotting a frequency of data; if True, plotting a probability density
+	
+	kwargs:
+	xunits, yunits: string with correct math text describing the units for the x/y data
+	x_lim, y_lim: list (or tuple) w/ two elements, setting the limits of the x/y ranges of plot
 	"""
 
 	my_cmap = plt.cm.get_cmap('jet')
@@ -306,6 +310,16 @@ def hist2d(xdata, ydata, x_axis, y_axis, num_b, system, analysis, norm):
 		cb1.set_label('Prob. Density', size=12)
 	else:
 		cb1.set_label('Frequency')
+
+	# READING IN KWARG DICTIONARY INTO SPECIFIC VARIABLES
+	for name, value in kwargs.items():
+		if name == 'xunits':
+			x_units = value
+			x_axis = '%s (%s)' %(x_axis, value)
+		elif name == 'yunits':
+			y_units = value
+			y_axis = '%s (%s)' %(y_axis, value)
+
 #	plt.title('Distribution of Base Pair interactions - %s-%s' %(base_a, base_b))
 #	plt.xlim((0,8))
 #	plt.ylim((0,8))
