@@ -1,5 +1,4 @@
-#!/mnt/lustre_fs/users/mjmcc/apps/python2.7/bin/python
-##!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
+#!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
 
 # USAGE:
 # from distance_functions import *

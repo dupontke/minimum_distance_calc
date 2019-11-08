@@ -31,7 +31,7 @@ square = np.square
 sqrt = np.sqrt
 flush = sys.stdout.flush
 
-important = 'protein and resname GTP and resname SAH and resname MG'
+important = 'protein or nucleic or resname A5 or resname A3 or resname U5 or resname ATP or resname MG'
 nSel = len(sel)
 
 # ----------------------------------------
@@ -67,7 +67,7 @@ dist_hist = np.zeros(num_bins,dtype=float)
 box = u.dimensions[:3]
 ffprint('the box dimensions are %s' %(box))
 
-out1 = open('%03d.%03d.min_dist_calc.dat' %(int(sys.argv[3]),end),'w')
+out1 = open('%03d.%03d.%s.min_dist_calc.dat' %(int(sys.argv[3]),end,system),'w')
 
 count = 0
 nSteps = 0
